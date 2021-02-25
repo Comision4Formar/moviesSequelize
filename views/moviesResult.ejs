@@ -7,18 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Lista de Peliculas</h1>
-    <h4>Total de peliculas: <%= cantidad %> </h4>
-    <h4>Top Ten</h4>
-    <ul>
-        <% top.forEach(peli => { %>
-            <li><%= peli.title %> </li>
-        <% }) %>
-    </ul>
+    <h1>Resultado de la búsqueda</h1>
     <ul>
         <% peliculas.forEach(pelicula => { %>
-         <li><a href="/movies/show/<%= pelicula.id %> "><%= pelicula.id %> - <%= pelicula.title %> </a></li>
+         <li><a href="/movies/show/<%= pelicula.id %> "><%= pelicula.title %> </a></li>
         <% }) %>
+        <% if (peliculas.length == 0) { %>
+            <p>No hay resultado</p>
+        <% } %>
     </ul>
 </body>
 </html>
