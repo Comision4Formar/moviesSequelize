@@ -14,16 +14,16 @@
             <li style="background-color: beige; list-style: none;"><a href="/movies/create">Agregar</a></li>
         </ul>
     </nav>
-    <h1>Movies Comision 4</h1>
+    <h1><%= actor.first_name %> <%= actor.last_name %>  </h1>
+ 
+    <h4>
+        Peliculas
+    </h4>
     <ul>
-        <li><a href="/movies/list">Listar todas</a></li>
-        <li><a href="/movies/create">Agregar película</a></li>
-
+        <% actor.peliculas.forEach(pelicula => { %>
+         <li><a href=""><%= pelicula.title %></a>   </li>
+        <% }) %>
     </ul>
-
-    <form action="/movies/search">
-        <input type="text" name="busqueda" placeholder="busca tu pelicula">
-        <button type="submit">Buscar</button>
-    </form>
+   
 </body>
 </html>

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {index, list, show, create, store, edit, update,remove,search} = require('../controllers/moviesController')
+const {index, list, show, create, store, edit, update,remove,search} = require('../controllers/genresController')
 
 router.get('/index',index);
 router.get('/list',list);

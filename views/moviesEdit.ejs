@@ -7,31 +7,37 @@
     <title>Document</title>
 </head>
 <body>
+    <nav style="width: 100%; ">
+        <ul style="display: flex; justify-content: space-evenly; background-color: blue; width: 100%; padding: 30px 0;">
+            <li style="background-color: beige; list-style: none;"><a href="/movies/list">Lista</a></li>
+            <li style="background-color: beige; list-style: none;"><a href="/movies/index">Index</a></li>
+            <li style="background-color: beige; list-style: none;"><a href="/movies/create">Agregar</a></li>
+        </ul>
+    </nav>
     <h1>Editar pelicula</h1>
-    <form action="/edit/<%= pelicula.id %>?_method=PUT " method="POST">
+    <form action="/movies/edit/<%= pelicula.id %>?_method=PUT " method="POST">
         <label for="">titulo</label>
         <input type="text" name="title" value="<%= pelicula.title %> ">
         <br>
         <label for="">rating</label>
-        <input type="number" name="rating" step="0.1" min="0">
+        <input type="number" name="rating" step="0.1" min="0" value=<%= pelicula.rating %>>
         <br>
         <label for="">premios</label>
-        <input type="number" name="awards" min="0">
+        <input type="number" name="awards" min="0" value=<%= pelicula.awards %>>
         <br>
         <label for="">fecha de estreno</label>
-        <input type="date" name="release_date">
+        <input type="date" name="release_date" value=<%= estreno %> >
         <br>
         <label for="">duración</label>
-        <input type="number" name="length" min="0">
+        <input type="number" name="length" min="0" value=<%= pelicula.length %>>
         <br>
         <select name="genre_id" id="">
-            <option value="" selected hidden>Elige el género</option>
             <% generos.forEach(genero => { %>
-                <option value="<%= genero.id %> "><%= genero.name %> </option>
+                <option <%= genero.id == pelicula.genre_id ? "selected" : null %>  value="<%= genero.id %> "><%= genero.name %> </option>
             <% }) %>
         </select>
         <br><br>
-        <button type="submit">Agregar</button>
+        <button type="submit">Guardar cambios</button>
     </form>
 </body>
 </html>

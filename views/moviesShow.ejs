@@ -7,14 +7,30 @@
     <title>Document</title>
 </head>
 <body>
+    <nav style="width: 100%; ">
+        <ul style="display: flex; justify-content: space-evenly; background-color: blue; width: 100%; padding: 30px 0;">
+            <li style="background-color: beige; list-style: none;"><a href="/movies/list">Lista</a></li>
+            <li style="background-color: beige; list-style: none;"><a href="/movies/index">Index</a></li>
+            <li style="background-color: beige; list-style: none;"><a href="/movies/create">Agregar</a></li>
+        </ul>
+    </nav>
     <h1><%= pelicula.title %> </h1>
     <ul>
         <li>Premios: <%= pelicula.awards %> </li>
         <li>Fecha de estreno: <%= estreno %> </li>
         <li>Rating: <%= pelicula.rating %> </li>
+        <li>Genero: <a href="/genres/show/<%= pelicula.genero.id %> "> <%= pelicula.genero.name %></a> </li>
     </ul>
-    <a href=""></a>
-    <form action="">
+    <h4>
+        Actores
+    </h4>
+    <ul>
+        <% pelicula.actores.forEach(actor => { %>
+         <li><a href="/actors/show/<%= actor.id %> "><%= actor.first_name %> <%= actor.last_name %></a>   </li>
+        <% }) %>
+    </ul>
+    <a href="/movies/edit/<%= pelicula.id %> ">Editar</a>
+    <form action="/movies/delete/<%= pelicula.id %>?_method=DELETE " method="POST">
         <button type="submit">Eliminar</button>
     </form>
 </body>
